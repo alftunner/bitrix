@@ -155,4 +155,4 @@ $APPLICATION->IncludeFile(
 			</div>
 		
 			<div id="workarea">
-				<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false);?></h1>
+				<h1 id="pagetitle"><?$APPLICATION->ShowTitle('h1');?></h1>
