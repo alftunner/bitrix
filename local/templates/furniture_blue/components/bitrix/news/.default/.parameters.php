@@ -5,5 +5,10 @@ $arTemplateParameters = [
         'NAME' => GetMessage('SET_SPECIALDATE'),
         'TYPE' => 'CHECKBOX',
         'DEFAULT' => 'N'
+    ],
+    'SET_IBLOCK_ID' => [
+        'NAME' => GetMessage('IBLOCK_ID'),
+        'TYPE' => 'STRING',
+        'DEFAULT' => ''
     ]
 ];
