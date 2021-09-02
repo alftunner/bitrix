@@ -19,3 +19,21 @@ function OnBeforeIBlockElementUpdateHandler(&$arFields)
         }
     }
 }
+
+AddEventHandler('main', 'onEpilog', 'onEpilogHandler', 1);
+function onEpilogHandler() {
+    if (defined('ERROR_404') && ERROR_404 == 'Y') {
+        CEventLog::Add([
+            'SEVERITY' => 'INFO',
+            'AUDIT_TYPE_ID' => 'ERROR_404',
+            'MODULE_ID' => 'main',
+            'DESCRIPTION' => $_SERVER['REQUEST_URI']
+        ]);
+
+        global $APPLICATION;
+        $APPLICATION->RestartBuffer();
+        include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/header.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/404.php';
+        include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/footer.php';
+    }
+}
