@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67685947-e45a-4b15-933e-15537f665dcf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/bitrix/news.detail/.default/component_epilog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/bitrix/news.detail/.default/result_modifier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/php_interface/include/events.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/php_interface/include/lang/ru/events.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/php_interface/init.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/furniture.catalog.random/06f/a3/a34e2874c597492a8cd2c31467bfbe30.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/furniture.catalog.random/06f/a3/a34e2874c597492a8cd2c31467bfbe30.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/menu.sections/06f/fc/fc96e6c7095b97a38766eb4b46c2f973.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/menu.sections/06f/fc/fc96e6c7095b97a38766eb4b46c2f973.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/furniture.catalog.index/e25/4c/4cb4583592961e292ecb1df36d75e389.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/furniture.catalog.index/e25/65/6569f9ec3c0f65f804a70ef977793df4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/furniture.catalog.random/06f/a3/a34e2874c597492a8cd2c31467bfbe30.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/menu.sections/06f/fc/fc96e6c7095b97a38766eb4b46c2f973.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/news.list/06f/20/20cb9f84aa9a338773118ff1ee7e156e.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/cache/s1/bitrix/news.list/06f/20/20cb9f84aa9a338773118ff1ee7e156e.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/16/16908b0605f2645dfcb4c3a8d248cef3.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/16/16908b0605f2645dfcb4c3a8d248cef3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/27/27850a3654870e28053dd5b6d2051c3e.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/27/27850a3654870e28053dd5b6d2051c3e.php" afterDir="false" />
@@ -20,6 +23,8 @@
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/6e/6e66afacf139a564ec94722f7403f6aa.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/6e/6e66afacf139a564ec94722f7403f6aa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/97/97256faf92817df2bc271378e1d17d14.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/97/97256faf92817df2bc271378e1d17d14.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/db/dbe00dce0bcd4d0479ac6ee177604892.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/access_check/db/dbe00dce0bcd4d0479ac6ee177604892.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_file/2d/2d01653203ee8a1e4595bd0b27d636f2.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_file/2d/2d01653203ee8a1e4595bd0b27d636f2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_file/36/3617741705059537d49166388178cc3e.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_file/36/3617741705059537d49166388178cc3e.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_iblock/12/12fe59ed4fd47eb7f7e38cdc8ffb4896.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_iblock/12/12fe59ed4fd47eb7f7e38cdc8ffb4896.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang/4d/4ddd3d008a59ee248a70e8d70e0f258e.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang/4d/4ddd3d008a59ee248a70e8d70e0f258e.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang/8a/8a6771cf0faa05bbec84465de484e41d.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang/8a/8a6771cf0faa05bbec84465de484e41d.php" afterDir="false" />
@@ -28,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang_domain/c0/c0a6035229545c96522ff35e2b8c37a0.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang_domain/c0/c0a6035229545c96522ff35e2b8c37a0.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang_domain/c3/c35050d36b400527c5a655799ffd5918.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_lang_domain/c3/c35050d36b400527c5a655799ffd5918.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/05/05039c396ee4176d523cf59a95c69194.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/05/05039c396ee4176d523cf59a95c69194.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/05/05a4b854c735508fd5190cef185874b0.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/05/05a4b854c735508fd5190cef185874b0.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/16/16de0975485ccb24f272fa0deb2401a3.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/16/16de0975485ccb24f272fa0deb2401a3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/2b/2bd3c94c15518704e41b0c8f9d018468.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/2b/2bd3c94c15518704e41b0c8f9d018468.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/2e/2e253c685b7c7d024ea4df067c3f9d7a.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/b_option/2e/2e253c685b7c7d024ea4df067c3f9d7a.php" afterDir="false" />
@@ -61,9 +67,6 @@
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/80/80d0df1c506cfa11d255d489ea901529.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/80/80d0df1c506cfa11d255d489ea901529.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/e4/e46a7cd1240e5249e769c3b594014c74.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/e4/e46a7cd1240e5249e769c3b594014c74.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/eb/eb3508c4ba55f931e8c612a0cb61f17c.php" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix/managed_cache/MYSQL/user_option/eb/eb3508c4ba55f931e8c612a0cb61f17c.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/.parameters.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/.parameters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/lang/ru/.parameters.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/lang/ru/.parameters.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/news/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +101,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/local/templates/furniture_blue/components/bitrix/news/.default/lang/ru" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/local/php_interface/include/lang/ru" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -109,11 +112,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\111\OSPanel\domains\bitrix\local\php_interface\include\lang\ru" />
       <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates\furniture_blue\components\bitrix\news\.default\lang\ru" />
       <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates\furniture_blue\components\bitrix\news\.default" />
       <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates" />
       <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates\furniture_blue\components\bitrix\news\.default\bitrix\news.detail\.default" />
-      <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates\furniture_blue\components\bitrix\news\.default\bitrix\news.list\.default" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\111\OSPanel\domains\bitrix\local\templates\furniture_blue\components\bitrix\news\.default\bitrix\news.list\.default" />
@@ -131,7 +134,7 @@
       <workItem from="1628001943848" duration="17410000" />
       <workItem from="1630327074387" duration="2366000" />
       <workItem from="1630520209433" duration="37000" />
-      <workItem from="1630520265204" duration="6044000" />
+      <workItem from="1630520265204" duration="8058000" />
     </task>
     <task id="LOCAL-00001" summary="0. Ещё один нулевой коммит">
       <created>1630573412520</created>
@@ -147,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630573520626</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2. link rel=&quot;canonical&quot; для детальной новости">
+      <created>1630576091589</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1630576091589</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +177,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="0. Ещё один нулевой коммит" />
     <MESSAGE value="1. Установить значение тега meta «specialdate» в компоненте news.list" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Установить значение тега meta «specialdate» в компоненте news.list" />
+    <MESSAGE value="2. link rel=&quot;canonical&quot; для детальной новости" />
+    <option name="LAST_COMMIT_MESSAGE" value="2. link rel=&quot;canonical&quot; для детальной новости" />
   </component>
 </project>
