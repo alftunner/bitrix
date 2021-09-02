@@ -37,3 +37,28 @@ function onEpilogHandler() {
         include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/footer.php';
     }
 }
+
+AddEventHandler("main", "OnBeforeEventAdd", "OnBeforeEventAddHandler");
+function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
+{
+    if ($event == 'FEEDBACK_FORM') {
+        global $USER;
+        if ($userID = $USER->getId()) {
+            $rsUser = CUser::GetByID($userID);
+            $arUser = $rsUser->Fetch();
+            $arFields['AUTHOR'] = str_replace(
+                    ['#ID#', '#LOGIN#', '#NAME#'],
+                    [$arUser['ID'], $arUser['LOGIN'], $arUser['LAST_NAME'].' '.$arUser['NAME'].' '.$arUser['SECOND_NAME']],
+                    GetMessage('AUTH')
+                ).$arFields['AUTHOR'];
+        } else {
+            $arFields['AUTHOR'] = GetMessage('NOT_AUTH').$arFields['AUTHOR'];
+        }
+        CEventLog::Add([
+            'SEVERITY' => 'INFO',
+            'AUDIT_TYPE_ID' => 'FEEDBACK_FORM',
+            'MODULE_ID' => 'main',
+            'DESCRIPTION' => GetMessage('DESCRIPTION').$arFields['AUTHOR']
+        ]);
+    }
+}
