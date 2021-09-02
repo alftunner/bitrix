@@ -1,5 +1,6 @@
 <?php
 const PRODUCT_IBLOCK = 2;
+const MANAGER_GROUP = 5;
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", 'OnBeforeIBlockElementUpdateHandler');
 function OnBeforeIBlockElementUpdateHandler(&$arFields)
 {
@@ -60,5 +61,22 @@ function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
             'MODULE_ID' => 'main',
             'DESCRIPTION' => GetMessage('DESCRIPTION').$arFields['AUTHOR']
         ]);
+    }
+}
+
+AddEventHandler("main", "OnBuildGlobalMenu", "OnBuildGlobalMenuHandler");
+function OnBuildGlobalMenuHandler(&$aGlobalMenu, &$aModuleMenu) {
+    global $USER;
+    if (in_array(MANAGER_GROUP, $USER->GetUserGroupArray())) {
+        foreach ($aGlobalMenu as $key => $value) {
+            if ($key != 'global_menu_content') {
+                unset($aGlobalMenu[$key]);
+            }
+        }
+        foreach ($aModuleMenu as $key => $value) {
+            if ($value['items_id'] != 'menu_iblock_/news') {
+                unset($aModuleMenu[$key]);
+            }
+        }
     }
 }
