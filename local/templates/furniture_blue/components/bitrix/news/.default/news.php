@@ -101,6 +101,7 @@ $this->setFrameMode(true);
 		"GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
 		"FILTER_NAME" => $arParams["FILTER_NAME"],
 		"HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
+
 		"SET_SPECIALDATE" => $arParams["SET_SPECIALDATE"],
 	),
 	$component
