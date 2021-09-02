@@ -1,6 +1,7 @@
 <?php
 const PRODUCT_IBLOCK = 2;
 const MANAGER_GROUP = 5;
+const METATAGS_IBLOCK = 6;
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", 'OnBeforeIBlockElementUpdateHandler');
 function OnBeforeIBlockElementUpdateHandler(&$arFields)
 {
@@ -77,6 +78,35 @@ function OnBuildGlobalMenuHandler(&$aGlobalMenu, &$aModuleMenu) {
             if ($value['items_id'] != 'menu_iblock_/news') {
                 unset($aModuleMenu[$key]);
             }
+        }
+    }
+}
+
+AddEventHandler("main", "OnPageStart", "OnPageStartHandler");
+function OnPageStartHandler() {
+    if(!CModule::IncludeModule('iblock')) return true;
+    global $APPLICATION;
+
+    $currentPage = $APPLICATION->GetCurPage();
+    if (strpos($currentPage, '/bitrix/') === 0) {
+        return true;
+    }
+    if (substr($currentPage, -10) == '/index.php') {
+        $currentPage = substr($currentPage, 0, -9);
+    }
+
+    $res = CIBlockElement::GetList(
+        false,
+        ['IBLOCK_ID'=>METATAGS_IBLOCK, 'ACTIVE'=>'Y', '%NAME'=>$currentPage],
+        false,
+        false,
+        ['ID', 'NAME', 'PROPERTY_TITLE', 'PROPERTY_DESCRIPTION']
+    );
+    while ($fields = $res->Fetch()) {
+        if (trim($fields['NAME']) == $currentPage) {
+            $APPLICATION->SetPageProperty('title', $fields['PROPERTY_TITLE_VALUE']);
+            $APPLICATION->SetPageProperty('description', $fields['PROPERTY_DESCRIPTION_VALUE']);
+            break;
         }
     }
 }
