@@ -9,7 +9,11 @@ if(!Loader::includeModule("iblock"))
 	ShowError(GetMessage("SIMPLECOMP_EXAM2_IBLOCK_MODULE_NONE"));
 	return;
 }
-if ($this->StartResultCache()) {
+if ($this->StartResultCache(false, [isset($_GET['F'])])) {
+    if (isset($_GET['F'])) {
+        $this->AbortResultCache();
+    }
+
     if (!$iblockProd = (int) $arParams['PRODUCTS_IBLOCK_ID']) {
         return false;
     }
@@ -63,10 +67,19 @@ if ($this->StartResultCache()) {
         ];
     }
 
+    $filter = ['IBLOCK_ID'=>$iblockProd, 'ACTIVE'=>'Y', 'SECTION_ID'=>array_keys($arAllSections)];
+    if (isset($_GET['F'])) {
+        $filter[] = [
+            'LOGIC' => 'OR',
+            ['<=PROPERTY_PRICE' => 1700, 'PROPERTY_MATERIAL' => 'Дерево, ткань'],
+            ['<PROPERTY_PRICE' => 1500, 'PROPERTY_MATERIAL' => 'Металл, пластик']
+        ];
+    }
+
     $arAllProducts = [];
     $resProducts = CIBlockElement::GetList(
         ['NAME' => 'ASC', 'SORT' => 'ASC'],
-        ['IBLOCK_ID'=>$iblockProd, 'ACTIVE'=>'Y', 'SECTION_ID'=>array_keys($arAllSections)],
+        $filter,
         false,
         false,
         ['ID', 'NAME', 'CODE', 'IBLOCK_SECTION_ID', 'PROPERTY_PRICE', 'PROPERTY_MATERIAL', 'PROPERTY_ARTNUMBER']
@@ -97,6 +110,11 @@ if ($this->StartResultCache()) {
     $arResult['ALL_PRODUCTS'] = $arAllProducts;
     $arResult['ALL_SECTIONS'] = $arAllSections;
     $arResult['COUNT_PRODUCTS'] = count($arAllProducts);
+
+    if (!isset($_GET['F'])) {
+        $url = $APPLICATION->GetCurPage().'?F=Y';
+        $arResult['FILTER_LINK'] = '<a href="'.$url.'">'.$url.'</a>';
+    }
 
     $this->setResultCacheKeys(['COUNT_PRODUCTS']);
 

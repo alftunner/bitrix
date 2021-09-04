@@ -1,5 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+if (isset($arResult['FILTER_LINK'])) {
+    echo GetMessage('FILTER').$arResult['FILTER_LINK'].'<br/>';
+}
+
 echo '---<br/><br/>';
 echo '<b>'.GetMessage('CATALOG').'</b></br>';
 echo '<ul>';
