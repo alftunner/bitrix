@@ -6,8 +6,9 @@ if (isset($arResult['FILTER_LINK'])) {
 
 echo '---<br/><br/>';
 echo '<b>'.GetMessage('CATALOG').'</b></br>';
-echo '<ul>';
-foreach($arResult['ITEMS'] as $item) {
+$this->AddEditAction('iblock_'.$arResult["IBLOCK_ID"], $arResult['ADD_ELEMENT_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_ADD"));
+echo '<ul id="'.$this->GetEditAreaId('iblock_'.$arResult["IBLOCK_ID"]).'">';
+foreach($arResult['ITEMS'] as $newsId => $item) {
     $str = '';
     foreach ($item['SECTIONS'] as $sectionID) {
         $str .= ', '.$arResult['ALL_SECTIONS'][$sectionID]['NAME'];
@@ -15,8 +16,11 @@ foreach($arResult['ITEMS'] as $item) {
     echo '<li><b>'.$item['NAME'].'</b> - '.$item['ACTIVE_FROM'].' ('.substr($str, 2).')';
     echo '<ul>';
     foreach ($item['PRODUCTS'] as $prodId) {
+        $ermitId = $newsId.'_'.$prodId;
         $arProduct = $arResult['ALL_PRODUCTS'][$prodId];
-        echo '<li>'.$arProduct['NAME']. ' - '.$arProduct['PRICE']. ' - '.$arProduct['MATERIAL']. ' - '.$arProduct['ARTNUMBER'].' ('.$arProduct['LINK'].')</li>';
+        $this->AddEditAction($ermitId, $arProduct['EDIT_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
+        $this->AddDeleteAction($ermitId, $arProduct['DELETE_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+        echo '<li id="'.$this->GetEditAreaId($ermitId).'">'.$arProduct['NAME']. ' - '.$arProduct['PRICE']. ' - '.$arProduct['MATERIAL']. ' - '.$arProduct['ARTNUMBER'].' ('.$arProduct['LINK'].')</li>';
     }
     echo '</ul>';
     echo '</li>';

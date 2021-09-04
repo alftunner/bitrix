@@ -27,6 +27,8 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
         return false;
     }
 
+    $arResult["IBLOCK_ID"] = $iblockProd;
+
     $arAllSections = [];
     $arIdNews = [];
     $resSections = CIBlockSection::GetList(
@@ -86,6 +88,14 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
     );
     while ($arProduct = $resProducts->GetNext()) {
         $prodId = $arProduct['ID'];
+
+        $arButtons = CIBlock::GetPanelButtons(
+            $iblockProd,
+            $prodId,
+            0,
+            array("SECTION_BUTTONS" => false, "SESSID" => false)
+        );
+
         $arAllProducts[$prodId] = [
             'NAME' => $arProduct['NAME'],
             'PRICE' => $arProduct['PROPERTY_PRICE_VALUE'],
@@ -95,7 +105,9 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
                 ['#SECTION_ID#', '#ELEMENT_CODE#', '#ELEMENT_ID#'],
                 [$arProduct['IBLOCK_SECTION_ID'], $arProduct['CODE'], $prodId],
                 $detailTemp
-            )
+            ),
+            'EDIT_LINK' => $arButtons["edit"]["edit_element"]["ACTION_URL"],
+            'DELETE_LINK' => $arButtons["edit"]["delete_element"]["ACTION_URL"]
         ];
         $IBLOCK_SECTION_ID = $arProduct['IBLOCK_SECTION_ID'];
         foreach ($arAllSections[$IBLOCK_SECTION_ID]['NEWS'] as $newsId) {
@@ -115,6 +127,14 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
         $url = $APPLICATION->GetCurPage().'?F=Y';
         $arResult['FILTER_LINK'] = '<a href="'.$url.'">'.$url.'</a>';
     }
+
+    $arButtons = CIBlock::GetPanelButtons(
+        $iblockProd,
+        0,
+        0,
+        array("SECTION_BUTTONS"=>false, "SESSID"=>false)
+    );
+    $arResult["ADD_ELEMENT_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
 
     $this->setResultCacheKeys(['COUNT_PRODUCTS']);
 
