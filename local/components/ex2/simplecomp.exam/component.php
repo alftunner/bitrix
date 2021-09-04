@@ -136,6 +136,17 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
     );
     $arResult["ADD_ELEMENT_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
 
+    $res = CIBlock::GetByID($iblockProd);
+    $ar_res = $res->GetNext();
+
+    $this->AddIncludeAreaIcon(
+        array(
+            'URL'=> 'http://bitrix/bitrix/admin/iblock_element_edit.php?IBLOCK_ID='.$iblockProd.'&type='.$ar_res['IBLOCK_TYPE_ID'].'&lang=ru&ID=27&find_section_section=-1&WF=Y',
+            'TITLE' => GetMessage('IB_V_ADMIN'),
+            'IN_PARAMS_MENU' => true
+        )
+    );
+
     $this->setResultCacheKeys(['COUNT_PRODUCTS']);
 
     $this->includeComponentTemplate();
