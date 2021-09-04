@@ -78,6 +78,9 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
         ];
     }
 
+    $minPrice = 999999999;
+    $maxPrice = 0;
+
     $arAllProducts = [];
     $resProducts = CIBlockElement::GetList(
         ['NAME' => 'ASC', 'SORT' => 'ASC'],
@@ -96,9 +99,17 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
             array("SECTION_BUTTONS" => false, "SESSID" => false)
         );
 
+        $price = $arProduct['PROPERTY_PRICE_VALUE'];
+        if ($price < $minPrice) {
+            $minPrice = $price;
+        }
+        if ($price > $maxPrice) {
+            $maxPrice = $price;
+        }
+
         $arAllProducts[$prodId] = [
             'NAME' => $arProduct['NAME'],
-            'PRICE' => $arProduct['PROPERTY_PRICE_VALUE'],
+            'PRICE' => $price,
             'MATERIAL' => $arProduct['PROPERTY_MATERIAL_VALUE'],
             'ARTNUMBER' => $arProduct['PROPERTY_ARTNUMBER_VALUE'],
             'LINK' => str_replace(
@@ -146,8 +157,10 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
             'IN_PARAMS_MENU' => true
         )
     );
+    $arResult['MIN_PRICE'] = $minPrice;
+    $arResult['MAX_PRICE'] = $maxPrice;
 
-    $this->setResultCacheKeys(['COUNT_PRODUCTS']);
+    $this->setResultCacheKeys(['COUNT_PRODUCTS', 'MIN_PRICE', 'MAX_PRICE']);
 
     $this->includeComponentTemplate();
 }
