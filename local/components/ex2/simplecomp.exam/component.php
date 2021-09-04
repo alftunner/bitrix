@@ -19,6 +19,9 @@ if ($this->StartResultCache()) {
     if (!$propCode = trim($arParams['PROPERTY_CODE'])) {
         return false;
     }
+    if (!$detailTemp = trim($arParams['DETAIL_TEMPLATE'])) {
+        return false;
+    }
 
     $arAllSections = [];
     $arIdNews = [];
@@ -62,11 +65,11 @@ if ($this->StartResultCache()) {
 
     $arAllProducts = [];
     $resProducts = CIBlockElement::GetList(
-        false,
+        ['NAME' => 'ASC', 'SORT' => 'ASC'],
         ['IBLOCK_ID'=>$iblockProd, 'ACTIVE'=>'Y', 'SECTION_ID'=>array_keys($arAllSections)],
         false,
         false,
-        ['ID', 'NAME', 'IBLOCK_SECTION_ID', 'PROPERTY_PRICE', 'PROPERTY_MATERIAL', 'PROPERTY_ARTNUMBER']
+        ['ID', 'NAME', 'CODE', 'IBLOCK_SECTION_ID', 'PROPERTY_PRICE', 'PROPERTY_MATERIAL', 'PROPERTY_ARTNUMBER']
     );
     while ($arProduct = $resProducts->GetNext()) {
         $prodId = $arProduct['ID'];
@@ -74,7 +77,12 @@ if ($this->StartResultCache()) {
             'NAME' => $arProduct['NAME'],
             'PRICE' => $arProduct['PROPERTY_PRICE_VALUE'],
             'MATERIAL' => $arProduct['PROPERTY_MATERIAL_VALUE'],
-            'ARTNUMBER' => $arProduct['PROPERTY_ARTNUMBER_VALUE']
+            'ARTNUMBER' => $arProduct['PROPERTY_ARTNUMBER_VALUE'],
+            'LINK' => str_replace(
+                ['#SECTION_ID#', '#ELEMENT_CODE#', '#ELEMENT_ID#'],
+                [$arProduct['IBLOCK_SECTION_ID'], $arProduct['CODE'], $prodId],
+                $detailTemp
+            )
         ];
         $IBLOCK_SECTION_ID = $arProduct['IBLOCK_SECTION_ID'];
         foreach ($arAllSections[$IBLOCK_SECTION_ID]['NEWS'] as $newsId) {

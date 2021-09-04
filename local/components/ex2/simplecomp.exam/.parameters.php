@@ -14,6 +14,10 @@ $arComponentParameters = array(
             "NAME" => GetMessage("NAME_PROPERTY_CODE"),
             "TYPE" => "STRING"
         ),
+        "DETAIL_TEMPLATE" => array(
+            "NAME" => GetMessage("NAME_DETAIL_TEMPLATE"),
+            "TYPE" => "STRING"
+        ),
         "CACHE_TIME" => ["DEFAULT" => 3600]
 	),
 );

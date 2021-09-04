@@ -12,7 +12,7 @@ foreach($arResult['ITEMS'] as $item) {
     echo '<ul>';
     foreach ($item['PRODUCTS'] as $prodId) {
         $arProduct = $arResult['ALL_PRODUCTS'][$prodId];
-        echo '<li>'.$arProduct['NAME']. ' - '.$arProduct['PRICE']. ' - '.$arProduct['MATERIAL']. ' - '.$arProduct['ARTNUMBER'].'</li>';
+        echo '<li>'.$arProduct['NAME']. ' - '.$arProduct['PRICE']. ' - '.$arProduct['MATERIAL']. ' - '.$arProduct['ARTNUMBER'].' ('.$arProduct['LINK'].')</li>';
     }
     echo '</ul>';
     echo '</li>';
