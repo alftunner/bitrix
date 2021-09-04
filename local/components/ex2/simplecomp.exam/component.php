@@ -20,6 +20,9 @@ $arNavParams = array(
 $arNavigation = CDBResult::GetNavParams($arNavParams);
 
 if ($this->StartResultCache(false, [$arNavigation, isset($_GET['F'])])) {
+    global $CACHE_MANAGER;
+    $CACHE_MANAGER->StartTagCache('');
+
     if (isset($_GET['F'])) {
         $this->AbortResultCache();
     }
@@ -185,6 +188,9 @@ if ($this->StartResultCache(false, [$arNavigation, isset($_GET['F'])])) {
     $this->setResultCacheKeys(['COUNT_PRODUCTS', 'MIN_PRICE', 'MAX_PRICE']);
 
     $this->includeComponentTemplate();
+
+    $CACHE_MANAGER->RegisterTag('iblock_id_'.SERVICE_IBLOCK);
+    $CACHE_MANAGER->EndTagCache();
 }
 
 $APPLICATION->SetTitle(GetMessage('SET_TITLE').$arResult['COUNT_PRODUCTS']);

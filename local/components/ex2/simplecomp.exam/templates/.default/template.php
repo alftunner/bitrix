@@ -3,7 +3,7 @@
 if (isset($arResult['FILTER_LINK'])) {
     echo GetMessage('FILTER').$arResult['FILTER_LINK'].'<br/>';
 }
-
+echo GetMessage('TIME').time().'<br>';
 echo '---<br/><br/>';
 echo '<b>'.GetMessage('CATALOG').'</b></br>';
 $this->AddEditAction('iblock_'.$arResult["IBLOCK_ID"], $arResult['ADD_ELEMENT_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_ADD"));
