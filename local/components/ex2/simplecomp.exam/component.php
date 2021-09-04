@@ -9,7 +9,17 @@ if(!Loader::includeModule("iblock"))
 	ShowError(GetMessage("SIMPLECOMP_EXAM2_IBLOCK_MODULE_NONE"));
 	return;
 }
-if ($this->StartResultCache(false, [isset($_GET['F'])])) {
+
+$arParams["NEWS_COUNT"] = intval($arParams["NEWS_COUNT"]);
+if($arParams["NEWS_COUNT"]<=0) {
+    $arParams["NEWS_COUNT"] = 20;
+}
+$arNavParams = array(
+    "nPageSize" => $arParams["NEWS_COUNT"]
+);
+$arNavigation = CDBResult::GetNavParams($arNavParams);
+
+if ($this->StartResultCache(false, [$arNavigation, isset($_GET['F'])])) {
     if (isset($_GET['F'])) {
         $this->AbortResultCache();
     }
@@ -57,7 +67,7 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
         false,
         ['IBLOCK_ID'=>$iblockNews, 'ACTIVE'=>'Y', 'ID'=>$arIdNews],
         false,
-        false,
+        $arNavParams,
         ['ID', 'NAME', 'ACTIVE_FROM']
     );
     while ($arNew = $resNews->GetNext()) {
@@ -68,6 +78,16 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
             'PRODUCTS' => []
         ];
     }
+
+    $arResult["NAV_STRING"] = $resNews->GetPageNavString(
+        $arParams["PAGER_TITLE"],
+        $arParams["PAGER_TEMPLATE"],
+        $arParams["PAGER_SHOW_ALWAYS"],
+        $this
+    );
+    $arResult["NAV_CACHED_DATA"] = null;
+    $arResult["NAV_RESULT"] = $resNews;
+    $arResult["NAV_PARAM"] = null;
 
     $filter = ['IBLOCK_ID'=>$iblockProd, 'ACTIVE'=>'Y', 'SECTION_ID'=>array_keys($arAllSections)];
     if (isset($_GET['F'])) {
@@ -122,10 +142,12 @@ if ($this->StartResultCache(false, [isset($_GET['F'])])) {
         ];
         $IBLOCK_SECTION_ID = $arProduct['IBLOCK_SECTION_ID'];
         foreach ($arAllSections[$IBLOCK_SECTION_ID]['NEWS'] as $newsId) {
-            $arAllNews[$newsId]['PRODUCTS'][] = $prodId;
+            if (isset($arAllNews[$newsId])) {
+                $arAllNews[$newsId]['PRODUCTS'][] = $prodId;
 
-            if (!in_array($IBLOCK_SECTION_ID, $arAllNews[$newsId]['SECTIONS'])) {
-                $arAllNews[$newsId]['SECTIONS'][] = $IBLOCK_SECTION_ID;
+                if (!in_array($IBLOCK_SECTION_ID, $arAllNews[$newsId]['SECTIONS'])) {
+                    $arAllNews[$newsId]['SECTIONS'][] = $IBLOCK_SECTION_ID;
+                }
             }
         }
     }

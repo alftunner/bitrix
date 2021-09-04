@@ -26,3 +26,4 @@ foreach($arResult['ITEMS'] as $newsId => $item) {
     echo '</li>';
 }
 echo '</ul>';
+echo $arResult["NAV_STRING"];
