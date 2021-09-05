@@ -8,6 +8,8 @@
 	<?endif;?>
 	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
 		<h3><?=$arResult["NAME"]?></h3>
+        <a href="./?zal=1&id=<?=$arResult["ID"]?>" id="zalob"><?=GetMessage('ZALOBA')?></a><br>
+        <div id="result_zalob" style="color: red; margin: 10px 0 10px 0; display: none;"></div><br>
 	<?endif;?>
 	<div class="news-detail">
 	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
@@ -40,3 +42,25 @@
 	<?endforeach;?>
 	</div>
 </div>
+<script src="<?=$this->GetFolder()?>/jquery-1.8.3.js"></script>
+<?if ($arParams['SET_AJAX_ZALOB'] == 'Y') { ?>
+    <script>
+        var flag = 1;
+        $(function (){
+            $('#zalob').click(function (){
+                if (flag) {
+                    flag = 0;
+                    $.post(
+                        '.',
+                        'ajax=1&zal=1&id=<?=$arResult["ID"]?>',
+                        function (data) {
+                            $('#result_zalob').html(data).show();
+                            flag = 1;
+                        }
+                    );
+                }
+                return false;
+            });
+        });
+    </script>
+<? } ?>

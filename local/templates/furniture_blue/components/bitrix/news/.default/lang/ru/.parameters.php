@@ -2,3 +2,4 @@
 
 $MESS['SET_SPECIALDATE'] = 'Установить свойство страницы specialdate';
 $MESS['IBLOCK_ID'] = 'ID информационного блока для rel=canonical';
+$MESS['NAME_SET_AJAX_ZALOB'] = 'Собирать жалобы в режиме AJAX';

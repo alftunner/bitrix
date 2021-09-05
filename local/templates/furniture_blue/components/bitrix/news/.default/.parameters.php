@@ -10,5 +10,10 @@ $arTemplateParameters = [
         'NAME' => GetMessage('IBLOCK_ID'),
         'TYPE' => 'STRING',
         'DEFAULT' => ''
+    ],
+    'SET_AJAX_ZALOB' => [
+        'NAME' => GetMessage('NAME_SET_AJAX_ZALOB'),
+        'TYPE' => 'CHECKBOX',
+        'DEFAULT' => 'N'
     ]
 ];
