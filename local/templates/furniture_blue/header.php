@@ -140,6 +140,21 @@ $APPLICATION->IncludeComponent("bitrix:search.form", "flat", Array(
 
                 <?=$APPLICATION->ShowProperty('simplecomp_exam');?>
 
+                <div class="content-block">
+                    <div class="content-block-inner">
+                        <h3><?=GetMessage('CFT_LANG_CANGE')?></h3>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:main.site.selector",
+                            "selected",
+                            Array(
+                                "CACHE_TIME" => "3600",
+                                "CACHE_TYPE" => "A",
+                                "SITE_LIST" => array()
+                            )
+                        );?>
+                    </div>
+                </div>
+
 				<div class="information-block">
 					<div class="top"></div>
 					<div class="information-block-inner">
